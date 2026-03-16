@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/aiaudit
+    username: aiaudit
+    password: devpassword
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+server:
+  error:
+    include-message: always
+    include-stacktrace: on-param
+
+logging:
+  level:
+    com.aiaudit.platform: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+
+jwt:
+  secret: dev-secret-key-minimum-64-characters-long-for-hmac-sha512-signing-algorithm
+
+spring.mail:
+  host: localhost
+  port: 1025
+
+springdoc:
+  swagger-ui:
+    enabled: true

@@ -1,0 +1,51 @@
+# === Java / Maven ===
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+hs_err_pid*
+
+# === Maven Wrapper ===
+!backend/.mvn/wrapper/maven-wrapper.jar
+
+# === Spring Boot ===
+backend/*.log*
+
+# === Node / Angular ===
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.sass-cache/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# === IDEs ===
+.idea/
+*.iml
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Environment ===
+.env
+.env.local
+.env.*.local
+
+# === Docker ===
+docker-compose.override.yml
+
+# === Claude ===
+.claude/

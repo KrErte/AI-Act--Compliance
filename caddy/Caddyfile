@@ -1,0 +1,17 @@
+{
+    email admin@aiaudit.eu
+}
+
+:80, :443 {
+    handle /api/* {
+        reverse_proxy backend:8080
+    }
+
+    handle /actuator/health {
+        reverse_proxy backend:8080
+    }
+
+    handle {
+        reverse_proxy frontend:80
+    }
+}

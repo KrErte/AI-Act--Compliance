@@ -1,0 +1,65 @@
+export enum RiskLevel {
+  MINIMAL = 'MINIMAL',
+  LIMITED = 'LIMITED',
+  HIGH = 'HIGH',
+  UNACCEPTABLE = 'UNACCEPTABLE'
+}
+
+export enum ComplianceStatus {
+  NOT_STARTED = 'NOT_STARTED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLIANT = 'COMPLIANT',
+  NON_COMPLIANT = 'NON_COMPLIANT'
+}
+
+export enum ObligationStatus {
+  NOT_STARTED = 'NOT_STARTED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+  NOT_APPLICABLE = 'NOT_APPLICABLE'
+}
+
+export enum UserRole {
+  OWNER = 'OWNER',
+  ADMIN = 'ADMIN',
+  COMPLIANCE_MANAGER = 'COMPLIANCE_MANAGER',
+  VIEWER = 'VIEWER'
+}
+
+export enum SubscriptionPlan {
+  STARTER = 'STARTER',
+  PROFESSIONAL = 'PROFESSIONAL',
+  ENTERPRISE = 'ENTERPRISE'
+}
+
+export enum SubscriptionStatus {
+  ACTIVE = 'ACTIVE',
+  CANCELLED = 'CANCELLED',
+  PAST_DUE = 'PAST_DUE',
+  EXPIRED = 'EXPIRED'
+}
+
+export enum AiSystemStatus {
+  DRAFT = 'DRAFT',
+  ACTIVE = 'ACTIVE',
+  RETIRED = 'RETIRED'
+}
+
+export enum DeploymentContext {
+  INTERNAL = 'INTERNAL',
+  CUSTOMER_FACING = 'CUSTOMER_FACING',
+  EMBEDDED = 'EMBEDDED',
+  STANDALONE = 'STANDALONE'
+}
+
+export enum OrganizationRole {
+  PROVIDER = 'PROVIDER',
+  DEPLOYER = 'DEPLOYER',
+  BOTH = 'BOTH'
+}
+
+export enum QuestionType {
+  YES_NO = 'YES_NO',
+  SINGLE_CHOICE = 'SINGLE_CHOICE',
+  MULTI_CHOICE = 'MULTI_CHOICE'
+}

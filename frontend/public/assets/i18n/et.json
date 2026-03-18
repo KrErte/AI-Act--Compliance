@@ -9,7 +9,8 @@
     "gpai_models": "GPAI mudelid",
     "my_tasks": "Minu ülesanded",
     "analytics": "Analüütika",
-    "regulations": "Regulatsioonid"
+    "regulations": "Regulatsioonid",
+    "admin": "Admin"
   },
   "common": {
     "login": "Logi sisse",
@@ -362,16 +363,38 @@
   },
   "regulations": {
     "title": "Regulatsioonid",
-    "ai_act": "EL-i AI-määrus",
+    "ai_act": "EL AI määrus",
     "gdpr": "GDPR",
     "nis2": "NIS2",
     "dora": "DORA",
     "overlaps": "Regulatsioonide kattuvused",
-    "dashboard": "Mitmik-regulatsioonide juhtpaneel",
-    "coverage": "Kaetus",
+    "dashboard": "Mitme regulatsiooni töölaud",
+    "coverage": "Katvus",
     "no_regulations": "Regulatsioone pole seadistatud",
-    "subtitle": "EL-i AI-määrus (Regulation 2024/1689) põhiartiklid ja vastavustähtajad",
-    "key_deadlines": "Olulised tähtajad"
+    "subtitle": "Mitme regulatsiooni vastavus: EL AI määrus, DORA ja muud",
+    "key_deadlines": "Peamised tähtajad",
+    "frameworks": "Regulatsiooniraamistikud",
+    "domains": "valdkonda",
+    "questions": "küsimust",
+    "start_assessment": "Alusta hindamist",
+    "view_results": "Vaata tulemusi",
+    "assessment_history": "Hindamiste ajalugu",
+    "regulation": "Regulatsioon",
+    "score": "Skoor",
+    "domain": "Valdkond",
+    "questions_answered": "küsimust vastatud",
+    "weight": "Kaal",
+    "submit_assessment": "Esita hindamine",
+    "assessment_result": "Hindamise tulemus",
+    "completed_on": "Lõpetatud",
+    "overall_score": "Üldine vastavusskoor",
+    "domain_scores": "Valdkonna skoorid",
+    "level_low": "Vajab olulist parandamist",
+    "level_medium": "Arenev — tegevus vajalik",
+    "level_high": "Hea vastavuse tase",
+    "retake": "Korda hindamist",
+    "no_assessment": "Hindamist pole veel",
+    "no_assessment_desc": "Täitke hindamine, et näha oma vastavusskoori."
   },
   "landing": {
     "hero_title": "EL-i AI-määruse vastavus lihtsalt",
@@ -428,5 +451,24 @@
       "COMPLIANCE_MANAGER": "Vastavusjuht",
       "VIEWER": "Vaataja"
     }
+  },
+  "admin": {
+    "title": "Adminpaneel",
+    "subtitle": "Halda oma organisatsiooni kasutajaid, vaata statistikat ja auditi logi.",
+    "total_users": "Kasutajaid kokku",
+    "total_ai_systems": "AI süsteeme kokku",
+    "compliance_score": "Vastavuse skoor",
+    "obligations_completed": "Kohustused täidetud",
+    "users_by_role": "Kasutajad rolli järgi",
+    "risk_distribution": "Riskide jaotus",
+    "manage_users": "Halda kasutajaid",
+    "view_audit_log": "Vaata auditi logi",
+    "audit_log_title": "Auditi logi",
+    "active": "Aktiivne",
+    "disabled": "Keelatud",
+    "deactivate": "Deaktiveeri",
+    "activate": "Aktiveeri",
+    "user_updated": "Kasutaja uuendatud",
+    "user_deactivated": "Kasutaja deaktiveeritud"
   }
 }

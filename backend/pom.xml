@@ -89,10 +89,11 @@
             <version>${springdoc.version}</version>
         </dependency>
 
-        <!-- Mail (Resend via SMTP or REST) -->
+        <!-- Bucket4j Rate Limiting -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <groupId>com.bucket4j</groupId>
+            <artifactId>bucket4j-core</artifactId>
+            <version>8.10.1</version>
         </dependency>
 
         <!-- Actuator -->

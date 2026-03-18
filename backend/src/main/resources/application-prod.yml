@@ -5,6 +5,9 @@ spring:
       hibernate:
         format_sql: false
 
+  flyway:
+    baseline-on-migrate: false
+
 server:
   error:
     include-message: never
@@ -26,3 +29,7 @@ management:
   endpoint:
     health:
       show-details: never
+  endpoints:
+    web:
+      exposure:
+        include: health

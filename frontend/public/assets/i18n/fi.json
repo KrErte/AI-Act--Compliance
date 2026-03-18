@@ -9,7 +9,8 @@
     "gpai_models": "GPAI-mallit",
     "my_tasks": "Omat tehtävät",
     "analytics": "Analytiikka",
-    "regulations": "Säädökset"
+    "regulations": "Säädökset",
+    "admin": "Admin"
   },
   "common": {
     "login": "Kirjaudu sisään",
@@ -362,16 +363,38 @@
   },
   "regulations": {
     "title": "Säädökset",
-    "ai_act": "EU AI Act",
+    "ai_act": "EU:n tekoälylaki",
     "gdpr": "GDPR",
     "nis2": "NIS2",
     "dora": "DORA",
     "overlaps": "Säädösten päällekkäisyydet",
-    "dashboard": "Monisäädösten kojelauta",
+    "dashboard": "Usean säädöksen hallintapaneeli",
     "coverage": "Kattavuus",
     "no_regulations": "Säädöksiä ei ole määritetty",
-    "subtitle": "EU AI Act (asetus 2024/1689) keskeiset artiklat ja vaatimustenmukaisuuden määräajat",
-    "key_deadlines": "Keskeiset määräajat"
+    "subtitle": "Usean säädöksen vaatimustenmukaisuus: EU:n tekoälylaki, DORA ja muut",
+    "key_deadlines": "Keskeiset määräajat",
+    "frameworks": "Säädöskehykset",
+    "domains": "osa-aluetta",
+    "questions": "kysymystä",
+    "start_assessment": "Aloita arviointi",
+    "view_results": "Näytä tulokset",
+    "assessment_history": "Arviointihistoria",
+    "regulation": "Säädös",
+    "score": "Pisteet",
+    "domain": "Osa-alue",
+    "questions_answered": "kysymystä vastattu",
+    "weight": "Painoarvo",
+    "submit_assessment": "Lähetä arviointi",
+    "assessment_result": "Arvioinnin tulos",
+    "completed_on": "Valmistunut",
+    "overall_score": "Kokonaisvaatimustenmukaisuuspisteet",
+    "domain_scores": "Osa-alueiden pisteet",
+    "level_low": "Vaatii merkittävää parannusta",
+    "level_medium": "Kehittyvä — toimia tarvitaan",
+    "level_high": "Hyvä vaatimustenmukaisuustaso",
+    "retake": "Tee arviointi uudelleen",
+    "no_assessment": "Ei arviointia vielä",
+    "no_assessment_desc": "Suorita arviointi nähdäksesi vaatimustenmukaisuuspisteesi."
   },
   "landing": {
     "hero_title": "EU:n tekoälysäädöksen vaatimustenmukaisuus helposti",
@@ -428,5 +451,24 @@
       "COMPLIANCE_MANAGER": "Vaatimustenmukaisuuspäällikkö",
       "VIEWER": "Katselija"
     }
+  },
+  "admin": {
+    "title": "Hallintapaneeli",
+    "subtitle": "Hallitse organisaatiosi käyttäjiä, tarkastele tilastoja ja auditointilokia.",
+    "total_users": "Käyttäjät yhteensä",
+    "total_ai_systems": "AI-järjestelmät yhteensä",
+    "compliance_score": "Vaatimustenmukaisuuspisteet",
+    "obligations_completed": "Velvoitteet suoritettu",
+    "users_by_role": "Käyttäjät roolin mukaan",
+    "risk_distribution": "Riskijakauma",
+    "manage_users": "Hallitse käyttäjiä",
+    "view_audit_log": "Näytä auditointiloki",
+    "audit_log_title": "Auditointiloki",
+    "active": "Aktiivinen",
+    "disabled": "Poistettu käytöstä",
+    "deactivate": "Poista käytöstä",
+    "activate": "Aktivoi",
+    "user_updated": "Käyttäjä päivitetty",
+    "user_deactivated": "Käyttäjä poistettu käytöstä"
   }
 }

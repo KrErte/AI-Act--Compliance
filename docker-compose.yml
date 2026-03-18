@@ -38,10 +38,17 @@ services:
       LEMONSQUEEZY_STORE_ID: ${LEMONSQUEEZY_STORE_ID:-}
       CLAUDE_API_KEY: ${CLAUDE_API_KEY:-}
       CLAUDE_MODEL: ${CLAUDE_MODEL:-claude-sonnet-4-20250514}
+      APP_FRONTEND_URL: ${APP_FRONTEND_URL:-https://app.aiaudit.eu}
     volumes:
       - uploads:/app/uploads
     expose:
       - "8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     deploy:
       resources:
         limits:

@@ -9,7 +9,8 @@
     "gpai_models": "GPAI modeļi",
     "my_tasks": "Mani uzdevumi",
     "analytics": "Analītika",
-    "regulations": "Regulas"
+    "regulations": "Regulas",
+    "admin": "Admin"
   },
   "common": {
     "login": "Pieteikties",
@@ -362,16 +363,38 @@
   },
   "regulations": {
     "title": "Regulas",
-    "ai_act": "EU AI Act",
+    "ai_act": "ES MI akts",
     "gdpr": "GDPR",
     "nis2": "NIS2",
     "dora": "DORA",
     "overlaps": "Regulu pārklāšanās",
-    "dashboard": "Vairāku regulu informācijas panelis",
+    "dashboard": "Vairāku regulu panelis",
     "coverage": "Pārklājums",
-    "no_regulations": "Nav konfigurētu regulu",
-    "subtitle": "EU AI Act (Regula 2024/1689) galvenie panti un atbilstības termiņi",
-    "key_deadlines": "Galvenie termiņi"
+    "no_regulations": "Regulas nav konfigurētas",
+    "subtitle": "Vairāku regulu atbilstība: ES MI akts, DORA un citas",
+    "key_deadlines": "Galvenie termiņi",
+    "frameworks": "Regulējuma ietvari",
+    "domains": "jomas",
+    "questions": "jautājumi",
+    "start_assessment": "Sākt novērtējumu",
+    "view_results": "Skatīt rezultātus",
+    "assessment_history": "Novērtējumu vēsture",
+    "regulation": "Regula",
+    "score": "Rezultāts",
+    "domain": "Joma",
+    "questions_answered": "jautājumi atbildēti",
+    "weight": "Svars",
+    "submit_assessment": "Iesniegt novērtējumu",
+    "assessment_result": "Novērtējuma rezultāts",
+    "completed_on": "Pabeigts",
+    "overall_score": "Kopējais atbilstības rādītājs",
+    "domain_scores": "Jomu rādītāji",
+    "level_low": "Nepieciešami būtiski uzlabojumi",
+    "level_medium": "Attīstās — nepieciešama rīcība",
+    "level_high": "Labs atbilstības līmenis",
+    "retake": "Atkārtot novērtējumu",
+    "no_assessment": "Novērtējuma vēl nav",
+    "no_assessment_desc": "Veiciet novērtējumu, lai redzētu atbilstības rādītāju."
   },
   "landing": {
     "hero_title": "EU AI Act atbilstība vienkārši",
@@ -428,5 +451,24 @@
       "COMPLIANCE_MANAGER": "Atbilstības vadītājs",
       "VIEWER": "Skatītājs"
     }
+  },
+  "admin": {
+    "title": "Administrēšanas panelis",
+    "subtitle": "Pārvaldiet organizācijas lietotājus, skatiet statistiku un audita žurnālu.",
+    "total_users": "Kopā lietotāju",
+    "total_ai_systems": "Kopā AI sistēmu",
+    "compliance_score": "Atbilstības rādītājs",
+    "obligations_completed": "Saistības izpildītas",
+    "users_by_role": "Lietotāji pēc lomas",
+    "risk_distribution": "Risku sadalījums",
+    "manage_users": "Pārvaldīt lietotājus",
+    "view_audit_log": "Skatīt audita žurnālu",
+    "audit_log_title": "Audita žurnāls",
+    "active": "Aktīvs",
+    "disabled": "Atspējots",
+    "deactivate": "Deaktivēt",
+    "activate": "Aktivēt",
+    "user_updated": "Lietotājs atjaunināts",
+    "user_deactivated": "Lietotājs deaktivēts"
   }
 }

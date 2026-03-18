@@ -1,83 +1,99 @@
 package com.aiaudit.platform.auth;
 
-import lombok.RequiredArgsConstructor;
+import com.aiaudit.platform.email.EmailTemplateService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class EmailService {
 
-    private final JavaMailSender mailSender;
+    private final WebClient resendClient;
+    private final EmailTemplateService templateService;
+    private final String fromAddress;
+    private final String frontendUrl;
 
-    @Value("${mail.from}")
-    private String fromAddress;
+    public EmailService(
+            @Value("${resend.api-key:}") String apiKey,
+            @Value("${mail.from}") String fromAddress,
+            @Value("${app.frontend-url:https://app.aiaudit.eu}") String frontendUrl,
+            EmailTemplateService templateService) {
+        this.fromAddress = fromAddress;
+        this.frontendUrl = frontendUrl;
+        this.templateService = templateService;
+        this.resendClient = WebClient.builder()
+                .baseUrl("https://api.resend.com")
+                .defaultHeader("Authorization", "Bearer " + apiKey)
+                .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                .build();
+    }
 
     @Async
     public void sendPasswordResetEmail(String toEmail, String token) {
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(fromAddress);
-            message.setTo(toEmail);
-            message.setSubject("AIAudit - Password Reset");
-            message.setText(
-                    "You requested a password reset for your AIAudit account.\n\n" +
-                    "Click the link below to reset your password:\n" +
-                    "https://app.aiaudit.eu/auth/reset-password?token=" + token + "\n\n" +
-                    "This link expires in 1 hour.\n\n" +
-                    "If you didn't request this, please ignore this email."
-            );
-            mailSender.send(message);
-            log.info("Password reset email sent to {}", toEmail);
-        } catch (Exception e) {
-            log.error("Failed to send password reset email to {}", toEmail, e);
-        }
+        String resetUrl = frontendUrl + "/auth/reset-password?token=" + token;
+        String html = templateService.renderPasswordReset(resetUrl);
+        sendEmail(toEmail, "AIAudit — Password Reset", html);
     }
 
     @Async
     public void sendTeamInvitationEmail(String toEmail, String token, String organizationName, String inviterName) {
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(fromAddress);
-            message.setTo(toEmail);
-            message.setSubject("AIAudit - You've been invited to join " + organizationName);
-            message.setText(
-                    inviterName + " has invited you to join " + organizationName + " on AIAudit.\n\n" +
-                    "Click the link below to accept the invitation and create your account:\n" +
-                    "https://app.aiaudit.eu/auth/accept-invitation?token=" + token + "\n\n" +
-                    "This invitation expires in 7 days.\n\n" +
-                    "If you didn't expect this invitation, please ignore this email."
-            );
-            mailSender.send(message);
-            log.info("Team invitation email sent to {}", toEmail);
-        } catch (Exception e) {
-            log.error("Failed to send team invitation email to {}", toEmail, e);
-        }
+        String acceptUrl = frontendUrl + "/auth/accept-invitation?token=" + token;
+        String html = templateService.renderTeamInvitation(inviterName, organizationName, acceptUrl);
+        sendEmail(toEmail, "AIAudit — You've been invited to join " + organizationName, html);
     }
 
     @Async
     public void sendTaskAssignmentEmail(String toEmail, String taskTitle, String aiSystemName) {
+        String tasksUrl = frontendUrl + "/my-tasks";
+        String html = templateService.renderTaskAssignment(taskTitle, aiSystemName, tasksUrl);
+        sendEmail(toEmail, "AIAudit — New task assigned: " + taskTitle, html);
+    }
+
+    @Async
+    public void sendDeadlineAlertEmail(String toEmail, String obligationTitle, String aiSystemName, String dueDate, int daysLeft) {
+        String dashboardUrl = frontendUrl + "/dashboard";
+        String html = templateService.renderDeadlineAlert(obligationTitle, aiSystemName, dueDate, daysLeft, dashboardUrl);
+        String subject = daysLeft <= 0
+                ? "AIAudit — OVERDUE: " + obligationTitle
+                : "AIAudit — Deadline in " + daysLeft + " days: " + obligationTitle;
+        sendEmail(toEmail, subject, html);
+    }
+
+    @Async
+    public void sendWeeklyDigestEmail(String toEmail, String userName, int totalSystems, int complianceScore,
+                                       int completedThisWeek, int overdueCount, List<String> upcomingDeadlines) {
+        String dashboardUrl = frontendUrl + "/dashboard";
+        String html = templateService.renderWeeklyDigest(userName, totalSystems, complianceScore,
+                completedThisWeek, overdueCount, upcomingDeadlines, dashboardUrl);
+        sendEmail(toEmail, "AIAudit — Weekly Compliance Digest", html);
+    }
+
+    private void sendEmail(String to, String subject, String html) {
         try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(fromAddress);
-            message.setTo(toEmail);
-            message.setSubject("AIAudit - New task assigned: " + taskTitle);
-            message.setText(
-                    "You have been assigned a new compliance task on AIAudit.\n\n" +
-                    "Task: " + taskTitle + "\n" +
-                    "AI System: " + aiSystemName + "\n\n" +
-                    "Log in to AIAudit to view the details and take action:\n" +
-                    "https://app.aiaudit.eu/my-tasks"
+            Map<String, Object> payload = Map.of(
+                    "from", fromAddress,
+                    "to", List.of(to),
+                    "subject", subject,
+                    "html", html
             );
-            mailSender.send(message);
-            log.info("Task assignment email sent to {}", toEmail);
+            resendClient.post()
+                    .uri("/emails")
+                    .bodyValue(payload)
+                    .retrieve()
+                    .bodyToMono(String.class)
+                    .subscribe(
+                            response -> log.info("Email sent to {}: {}", to, subject),
+                            error -> log.error("Failed to send email to {}: {}", to, error.getMessage())
+                    );
         } catch (Exception e) {
-            log.error("Failed to send task assignment email to {}", toEmail, e);
+            log.error("Failed to send email to {}", to, e);
         }
     }
 }

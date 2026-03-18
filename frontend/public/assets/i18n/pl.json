@@ -9,7 +9,8 @@
     "gpai_models": "Modele GPAI",
     "my_tasks": "Moje zadania",
     "analytics": "Analityka",
-    "regulations": "Regulacje"
+    "regulations": "Regulacje",
+    "admin": "Admin"
   },
   "common": {
     "login": "Zaloguj się",
@@ -362,16 +363,38 @@
   },
   "regulations": {
     "title": "Regulacje",
-    "ai_act": "EU AI Act",
+    "ai_act": "Akt o AI UE",
     "gdpr": "GDPR",
     "nis2": "NIS2",
     "dora": "DORA",
     "overlaps": "Nakładanie się regulacji",
-    "dashboard": "Panel wieloregulacyjny",
+    "dashboard": "Panel wielu regulacji",
     "coverage": "Pokrycie",
-    "no_regulations": "Nie skonfigurowano regulacji",
-    "subtitle": "EU AI Act (Rozporządzenie 2024/1689) — kluczowe artykuły i terminy zgodności",
-    "key_deadlines": "Kluczowe terminy"
+    "no_regulations": "Brak skonfigurowanych regulacji",
+    "subtitle": "Zgodność z wieloma regulacjami: Akt o AI UE, DORA i inne",
+    "key_deadlines": "Kluczowe terminy",
+    "frameworks": "Ramy regulacyjne",
+    "domains": "domen",
+    "questions": "pytań",
+    "start_assessment": "Rozpocznij ocenę",
+    "view_results": "Zobacz wyniki",
+    "assessment_history": "Historia ocen",
+    "regulation": "Regulacja",
+    "score": "Wynik",
+    "domain": "Domena",
+    "questions_answered": "pytań odpowiedzianych",
+    "weight": "Waga",
+    "submit_assessment": "Złóż ocenę",
+    "assessment_result": "Wynik oceny",
+    "completed_on": "Ukończono",
+    "overall_score": "Ogólny wynik zgodności",
+    "domain_scores": "Wyniki domen",
+    "level_low": "Wymaga znaczącej poprawy",
+    "level_medium": "W trakcie rozwoju — wymagane działania",
+    "level_high": "Dobry poziom zgodności",
+    "retake": "Powtórz ocenę",
+    "no_assessment": "Brak oceny",
+    "no_assessment_desc": "Wykonaj ocenę, aby zobaczyć wynik zgodności."
   },
   "landing": {
     "hero_title": "Zgodność z EU AI Act — prosto i skutecznie",
@@ -428,5 +451,24 @@
       "COMPLIANCE_MANAGER": "Menedżer ds. zgodności",
       "VIEWER": "Obserwator"
     }
+  },
+  "admin": {
+    "title": "Panel administracyjny",
+    "subtitle": "Zarządzaj użytkownikami organizacji, przeglądaj statystyki i dziennik audytu.",
+    "total_users": "Łącznie użytkowników",
+    "total_ai_systems": "Łącznie systemów AI",
+    "compliance_score": "Wynik zgodności",
+    "obligations_completed": "Obowiązki wykonane",
+    "users_by_role": "Użytkownicy wg roli",
+    "risk_distribution": "Rozkład ryzyka",
+    "manage_users": "Zarządzaj użytkownikami",
+    "view_audit_log": "Zobacz dziennik audytu",
+    "audit_log_title": "Dziennik audytu",
+    "active": "Aktywny",
+    "disabled": "Wyłączony",
+    "deactivate": "Dezaktywuj",
+    "activate": "Aktywuj",
+    "user_updated": "Użytkownik zaktualizowany",
+    "user_deactivated": "Użytkownik dezaktywowany"
   }
 }

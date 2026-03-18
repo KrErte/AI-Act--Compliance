@@ -9,7 +9,8 @@
     "gpai_models": "GPAI modeliai",
     "my_tasks": "Mano užduotys",
     "analytics": "Analitika",
-    "regulations": "Reglamentai"
+    "regulations": "Reglamentai",
+    "admin": "Admin"
   },
   "common": {
     "login": "Prisijungti",
@@ -367,11 +368,33 @@
     "nis2": "NIS2",
     "dora": "DORA",
     "overlaps": "Reglamentų persidengimas",
-    "dashboard": "Kelių reglamentų valdymo skydas",
+    "dashboard": "Kelių reglamentų skydelis",
     "coverage": "Aprėptis",
     "no_regulations": "Reglamentai nesukonfigūruoti",
-    "subtitle": "ES DI aktas (Reglamentas 2024/1689) – pagrindiniai straipsniai ir atitikties terminai",
-    "key_deadlines": "Pagrindiniai terminai"
+    "subtitle": "Kelių reglamentų atitiktis: ES DI aktas, DORA ir kiti",
+    "key_deadlines": "Pagrindiniai terminai",
+    "frameworks": "Reguliavimo sistemos",
+    "domains": "sričių",
+    "questions": "klausimų",
+    "start_assessment": "Pradėti vertinimą",
+    "view_results": "Peržiūrėti rezultatus",
+    "assessment_history": "Vertinimų istorija",
+    "regulation": "Reglamentas",
+    "score": "Balas",
+    "domain": "Sritis",
+    "questions_answered": "klausimų atsakyta",
+    "weight": "Svoris",
+    "submit_assessment": "Pateikti vertinimą",
+    "assessment_result": "Vertinimo rezultatas",
+    "completed_on": "Užbaigta",
+    "overall_score": "Bendras atitikties balas",
+    "domain_scores": "Sričių balai",
+    "level_low": "Reikia reikšmingo pagerinimo",
+    "level_medium": "Tobulėja — reikia veiksmų",
+    "level_high": "Geras atitikties lygis",
+    "retake": "Pakartoti vertinimą",
+    "no_assessment": "Vertinimo dar nėra",
+    "no_assessment_desc": "Atlikite vertinimą, kad pamatytumėte savo atitikties balą."
   },
   "landing": {
     "hero_title": "ES DI akto atitiktis paprastai",
@@ -428,5 +451,24 @@
       "COMPLIANCE_MANAGER": "Atitikties vadovas",
       "VIEWER": "Stebėtojas"
     }
+  },
+  "admin": {
+    "title": "Administravimo skydelis",
+    "subtitle": "Valdykite organizacijos naudotojus, peržiūrėkite statistiką ir audito žurnalą.",
+    "total_users": "Iš viso naudotojų",
+    "total_ai_systems": "Iš viso AI sistemų",
+    "compliance_score": "Atitikties balas",
+    "obligations_completed": "Įvykdyti įsipareigojimai",
+    "users_by_role": "Naudotojai pagal vaidmenį",
+    "risk_distribution": "Rizikų pasiskirstymas",
+    "manage_users": "Valdyti naudotojus",
+    "view_audit_log": "Peržiūrėti audito žurnalą",
+    "audit_log_title": "Audito žurnalas",
+    "active": "Aktyvus",
+    "disabled": "Išjungtas",
+    "deactivate": "Deaktyvuoti",
+    "activate": "Aktyvuoti",
+    "user_updated": "Naudotojas atnaujintas",
+    "user_deactivated": "Naudotojas deaktyvuotas"
   }
 }

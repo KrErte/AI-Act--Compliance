@@ -1,6 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../../core/services/auth.service';
+
+interface NavItem {
+  path: string;
+  icon: string;
+  label: string;
+  exact?: boolean;
+  roles?: string[];
+}
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
         <h1>AIAudit</h1>
       </div>
       <nav class="sidebar-nav">
-        @for (item of navItems; track item.path) {
+        @for (item of visibleNavItems(); track item.path) {
           <a [routerLink]="item.path"
              routerLinkActive="active"
              [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
@@ -81,7 +90,9 @@ import { TranslateModule } from '@ngx-translate/core';
   `]
 })
 export class SidebarComponent {
-  navItems = [
+  private authService = inject(AuthService);
+
+  private allNavItems: NavItem[] = [
     { path: '/dashboard', icon: 'dashboard', label: 'nav.dashboard', exact: true },
     { path: '/ai-systems', icon: 'smart_toy', label: 'nav.ai_systems' },
     { path: '/compliance', icon: 'verified', label: 'nav.compliance' },
@@ -91,6 +102,15 @@ export class SidebarComponent {
     { path: '/regulations', icon: 'gavel', label: 'nav.regulations' },
     { path: '/team', icon: 'group', label: 'nav.team' },
     { path: '/organization', icon: 'business', label: 'nav.organization' },
+    { path: '/admin', icon: 'admin_panel_settings', label: 'nav.admin', roles: ['OWNER', 'ADMIN'] },
     { path: '/settings', icon: 'settings', label: 'nav.settings' }
   ];
+
+  visibleNavItems = computed(() => {
+    const role = this.authService.userRole();
+    return this.allNavItems.filter(item => {
+      if (!item.roles) return true;
+      return role ? item.roles.includes(role) : false;
+    });
+  });
 }

@@ -36,6 +36,9 @@ mail:
 resend:
   api-key: test-resend-key
 
+app:
+  frontend-url: http://localhost:4200
+
 lemonsqueezy:
   api-key: test-ls-key
   webhook-secret: test-webhook-secret

@@ -1,5 +1,6 @@
 package com.aiaudit.platform.alert;
 
+import com.aiaudit.platform.auth.EmailService;
 import com.aiaudit.platform.compliance.ComplianceObligation;
 import com.aiaudit.platform.compliance.ComplianceObligationRepository;
 import com.aiaudit.platform.compliance.ObligationStatus;
@@ -19,6 +20,7 @@ public class DeadlineAlertScheduler {
 
     private final ComplianceObligationRepository obligationRepository;
     private final AlertService alertService;
+    private final EmailService emailService;
 
     @Scheduled(cron = "0 0 8 * * *") // Daily at 8 AM
     @Transactional
@@ -36,16 +38,17 @@ public class DeadlineAlertScheduler {
         for (ComplianceObligation obligation : upcoming) {
             AlertSeverity severity;
             String title;
+            int daysLeft = (int) today.until(obligation.getDueDate()).getDays();
 
             if (obligation.getDueDate().isBefore(today)) {
                 severity = AlertSeverity.CRITICAL;
                 title = "OVERDUE: " + obligation.getArticleTitle();
             } else if (obligation.getDueDate().isBefore(today.plusDays(3))) {
                 severity = AlertSeverity.HIGH;
-                title = "Due in " + today.until(obligation.getDueDate()).getDays() + " days: " + obligation.getArticleTitle();
+                title = "Due in " + daysLeft + " days: " + obligation.getArticleTitle();
             } else {
                 severity = AlertSeverity.MEDIUM;
-                title = "Due in " + today.until(obligation.getDueDate()).getDays() + " days: " + obligation.getArticleTitle();
+                title = "Due in " + daysLeft + " days: " + obligation.getArticleTitle();
             }
 
             alertService.createAlert(
@@ -56,6 +59,17 @@ public class DeadlineAlertScheduler {
                     "Obligation '" + obligation.getArticleTitle() + "' for AI system '" +
                             obligation.getAiSystem().getName() + "' is due on " + obligation.getDueDate()
             );
+
+            // Send email for obligations due within 3 days or overdue
+            if (daysLeft <= 3 && obligation.getAssignedTo() != null) {
+                emailService.sendDeadlineAlertEmail(
+                        obligation.getAssignedTo().getEmail(),
+                        obligation.getArticleTitle(),
+                        obligation.getAiSystem().getName(),
+                        obligation.getDueDate().toString(),
+                        daysLeft
+                );
+            }
         }
         log.info("Created {} deadline alerts", upcoming.size());
     }

@@ -46,6 +46,10 @@ mail:
 resend:
   api-key: ${RESEND_API_KEY:}
 
+# App
+app:
+  frontend-url: ${APP_FRONTEND_URL:https://app.aiaudit.eu}
+
 # LemonSqueezy
 lemonsqueezy:
   api-key: ${LEMONSQUEEZY_API_KEY:}

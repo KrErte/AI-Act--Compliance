@@ -9,7 +9,8 @@
     "gpai_models": "GPAI Models",
     "my_tasks": "My Tasks",
     "analytics": "Analytics",
-    "regulations": "Regulations"
+    "regulations": "Regulations",
+    "admin": "Admin"
   },
   "common": {
     "login": "Log In",
@@ -370,8 +371,30 @@
     "dashboard": "Multi-Regulation Dashboard",
     "coverage": "Coverage",
     "no_regulations": "No regulations configured",
-    "subtitle": "EU AI Act (Regulation 2024/1689) key articles and compliance deadlines",
-    "key_deadlines": "Key Deadlines"
+    "subtitle": "Multi-regulation compliance: EU AI Act, DORA, and more",
+    "key_deadlines": "Key Deadlines",
+    "frameworks": "Regulation Frameworks",
+    "domains": "domains",
+    "questions": "questions",
+    "start_assessment": "Start Assessment",
+    "view_results": "View Results",
+    "assessment_history": "Assessment History",
+    "regulation": "Regulation",
+    "score": "Score",
+    "domain": "Domain",
+    "questions_answered": "questions answered",
+    "weight": "Weight",
+    "submit_assessment": "Submit Assessment",
+    "assessment_result": "Assessment Result",
+    "completed_on": "Completed on",
+    "overall_score": "Overall Compliance Score",
+    "domain_scores": "Domain Scores",
+    "level_low": "Needs significant improvement",
+    "level_medium": "Developing — action needed",
+    "level_high": "Good compliance level",
+    "retake": "Retake Assessment",
+    "no_assessment": "No Assessment Yet",
+    "no_assessment_desc": "Complete an assessment to see your compliance score."
   },
   "landing": {
     "hero_title": "EU AI Act Compliance Made Simple",
@@ -428,5 +451,24 @@
       "COMPLIANCE_MANAGER": "Compliance Manager",
       "VIEWER": "Viewer"
     }
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "subtitle": "Manage your organization's users, view statistics, and audit log.",
+    "total_users": "Total Users",
+    "total_ai_systems": "Total AI Systems",
+    "compliance_score": "Compliance Score",
+    "obligations_completed": "Obligations Completed",
+    "users_by_role": "Users by Role",
+    "risk_distribution": "Risk Distribution",
+    "manage_users": "Manage Users",
+    "view_audit_log": "View Audit Log",
+    "audit_log_title": "Audit Log",
+    "active": "Active",
+    "disabled": "Disabled",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "user_updated": "User updated successfully",
+    "user_deactivated": "User deactivated"
   }
 }

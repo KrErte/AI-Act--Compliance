@@ -13,6 +13,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "1.0"
 
   backend:
     build: ./backend
@@ -31,14 +36,28 @@ services:
       LEMONSQUEEZY_API_KEY: ${LEMONSQUEEZY_API_KEY:-}
       LEMONSQUEEZY_WEBHOOK_SECRET: ${LEMONSQUEEZY_WEBHOOK_SECRET:-}
       LEMONSQUEEZY_STORE_ID: ${LEMONSQUEEZY_STORE_ID:-}
+      CLAUDE_API_KEY: ${CLAUDE_API_KEY:-}
+      CLAUDE_MODEL: ${CLAUDE_MODEL:-claude-sonnet-4-20250514}
+    volumes:
+      - uploads:/app/uploads
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "2.0"
 
   frontend:
     build: ./frontend
     restart: unless-stopped
     expose:
       - "80"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
 
   caddy:
     image: caddy:2-alpine
@@ -53,8 +72,14 @@ services:
     depends_on:
       - backend
       - frontend
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
 
 volumes:
   pgdata:
+  uploads:
   caddy_data:
   caddy_config:

@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService } from '../../core/services/api.service';
+import { ToastService } from '../../shared/services/toast.service';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
@@ -49,6 +50,7 @@ import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner
 export class OrganizationComponent implements OnInit {
   private fb = inject(FormBuilder);
   private api = inject(ApiService);
+  private toast = inject(ToastService);
 
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -80,7 +82,7 @@ export class OrganizationComponent implements OnInit {
     this.api.put<any>('/organizations/me', this.form.value).subscribe({
       next: () => {
         this.saving = false;
-        this.successMessage = 'Organization updated successfully';
+        this.toast.success('Organization updated successfully');
       },
       error: () => { this.saving = false; }
     });

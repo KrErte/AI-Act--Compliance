@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService } from '../../core/services/api.service';
 import { AuthService } from '../../core/services/auth.service';
+import { ToastService } from '../../shared/services/toast.service';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
@@ -159,6 +160,7 @@ import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner
 export class ProfileComponent implements OnInit {
   private fb = inject(FormBuilder);
   private api = inject(ApiService);
+  private toast = inject(ToastService);
   authService = inject(AuthService);
 
   profileForm!: FormGroup;
@@ -212,8 +214,7 @@ export class ProfileComponent implements OnInit {
     this.api.put('/users/me', data).subscribe({
       next: () => {
         this.saving = false;
-        this.profileSuccess = true;
-        setTimeout(() => this.profileSuccess = false, 3000);
+        this.toast.success('Profile updated successfully');
       },
       error: () => { this.saving = false; }
     });
@@ -236,9 +237,8 @@ export class ProfileComponent implements OnInit {
     this.api.post('/auth/change-password', { currentPassword, newPassword }).subscribe({
       next: () => {
         this.savingPassword = false;
-        this.passwordSuccess = true;
+        this.toast.success('Password changed successfully');
         this.passwordForm.reset();
-        setTimeout(() => this.passwordSuccess = false, 3000);
       },
       error: (err: any) => {
         this.savingPassword = false;

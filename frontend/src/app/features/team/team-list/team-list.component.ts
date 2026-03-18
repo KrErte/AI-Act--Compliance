@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../core/services/api.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { ToastService } from '../../../shared/services/toast.service';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
@@ -136,6 +137,7 @@ import { LoadingSpinnerComponent } from '../../../shared/components/loading-spin
 })
 export class TeamListComponent implements OnInit {
   private api = inject(ApiService);
+  private toast = inject(ToastService);
   authService = inject(AuthService);
 
   members: any[] = [];
@@ -165,21 +167,21 @@ export class TeamListComponent implements OnInit {
   sendInvite(): void {
     this.api.post<any>('/team/invitations', { email: this.inviteEmail, role: this.inviteRole }).subscribe({
       next: () => {
-        this.inviteMessage = 'Invitation sent!';
+        this.toast.success('Invitation sent successfully');
         this.inviteEmail = '';
+        this.showInviteForm = false;
         this.loadData();
-        setTimeout(() => this.inviteMessage = '', 3000);
       }
     });
   }
 
   removeMember(member: any): void {
     if (confirm('Remove this team member?')) {
-      this.api.delete(`/team/members/${member.id}`).subscribe({ next: () => this.loadData() });
+      this.api.delete(`/team/members/${member.id}`).subscribe({ next: () => { this.toast.success('Team member removed'); this.loadData(); } });
     }
   }
 
   cancelInvitation(inv: any): void {
-    this.api.delete(`/team/invitations/${inv.id}`).subscribe({ next: () => this.loadData() });
+    this.api.delete(`/team/invitations/${inv.id}`).subscribe({ next: () => { this.toast.success('Invitation cancelled'); this.loadData(); } });
   }
 }

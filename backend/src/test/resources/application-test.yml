@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
+
+  flyway:
+    enabled: false
+
+  threads:
+    virtual:
+      enabled: false
+
+server:
+  servlet:
+    context-path: /api/v1
+
+jwt:
+  secret: test-secret-key-that-is-at-least-64-characters-long-for-hmac-sha512-testing
+  access-token-expiry: 900000
+  refresh-token-expiry: 604800000
+
+mail:
+  from: test@aiaudit.eu
+
+resend:
+  api-key: test-resend-key
+
+lemonsqueezy:
+  api-key: test-ls-key
+  webhook-secret: test-webhook-secret
+  store-id: test-store-id
+
+claude:
+  api-key: test-claude-key
+  model: claude-sonnet-4-20250514
+
+file:
+  upload-dir: ./test-uploads
+  max-size: 10
+
+subscription:
+  plans:
+    STARTER:
+      max-ai-systems: 5
+    PROFESSIONAL:
+      max-ai-systems: 20
+    ENTERPRISE:
+      max-ai-systems: -1

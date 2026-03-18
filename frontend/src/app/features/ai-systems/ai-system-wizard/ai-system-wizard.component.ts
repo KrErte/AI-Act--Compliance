@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService } from '../../../core/services/api.service';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-ai-system-wizard',
@@ -144,6 +145,7 @@ export class AiSystemWizardComponent {
   private fb = inject(FormBuilder);
   private api = inject(ApiService);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   steps = [
     'ai_systems.wizard.basic_info',
@@ -188,6 +190,7 @@ export class AiSystemWizardComponent {
 
     this.api.post<any>('/ai-systems', value).subscribe({
       next: res => {
+        this.toast.success('AI system created successfully');
         if (res.data?.id) {
           this.router.navigate(['/ai-systems', res.data.id]);
         }

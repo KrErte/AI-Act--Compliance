@@ -69,12 +69,13 @@ class ComplianceScoreServiceTest {
         when(obligationRepository.countByAiSystemId(systemId)).thenReturn(10L);
         when(obligationRepository.countByAiSystemIdAndStatus(systemId, ObligationStatus.COMPLETED)).thenReturn(3L);
         when(obligationRepository.countByAiSystemIdAndStatus(systemId, ObligationStatus.NOT_APPLICABLE)).thenReturn(0L);
-        when(obligationRepository.countByAiSystemIdAndStatus(systemId, ObligationStatus.IN_PROGRESS)).thenReturn(2L);
         when(aiSystemRepository.findById(systemId)).thenReturn(Optional.of(system));
 
         complianceScoreService.recalculate(systemId);
 
+        // 3 completed out of 10 applicable = 30%
         assertEquals(30, system.getComplianceScore());
+        // completed > 0 so short-circuits to IN_PROGRESS
         assertEquals(ComplianceStatus.IN_PROGRESS, system.getComplianceStatus());
     }
 

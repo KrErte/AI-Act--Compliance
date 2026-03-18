@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService } from '../../../core/services/api.service';
+import { ToastService } from '../../../shared/services/toast.service';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner.component';
 
 interface Obligation {
@@ -85,6 +86,7 @@ interface Obligation {
 export class ComplianceChecklistComponent implements OnInit {
   private api = inject(ApiService);
   private route = inject(ActivatedRoute);
+  private toast = inject(ToastService);
 
   aiSystemId = '';
   obligations: Obligation[] = [];
@@ -116,6 +118,7 @@ export class ComplianceChecklistComponent implements OnInit {
         next: res => {
           if (res.data) {
             obligation.status = res.data.status;
+            this.toast.success('Obligation status updated');
           }
         }
       });
